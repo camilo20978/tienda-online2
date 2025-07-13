@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <h1> Mi Tienda Online</h1>
+
+    <div class="secciones" id="categorias">
+        <button onclick="filtrarCategoria('todos')">Todos</button>
+        <button onclick="filtrarCategoria('ropa')">Ropa</button>
+        <button onclick="filtrarCategoria('zapatos')">Zapatos</button>
+        <button onclick="filtrarCategoria('accesorios')">Accesorios</button>
+    </div>
+
+    <div class="catalogo" id="catalogo"></div>
+    <div class="paginacion" id="paginacion"></div>
+
+    <div id="carrito">
+        <h2>💲 Carrito de Compras</h2>
+        <ul id="carrito-lista"></ul>
+        <div id="resumen">
+            <p>Total: $<span id="total">0.00</span></p>
+            <button onclick="mostrarFactura()" style="background-color: #00c896; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-top: 10px;">Generar Factura</button>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <button onclick="toggleSidebar()">
+            <span class="material-icons">menu</span>
+            <small>Menú</small>
+        </button>
+        <button onclick="mostrarCarrito()">
+            <span class="material-icons">shopping_cart</span>
+            <small>Carrito</small>
+        </button>
+        <button onclick="toggleBusqueda()">
+            <span class="material-icons">search</span>
+            <small>Buscar</small>
+        </button>
+        <button onclick="mostrarPerfil()">
+            <span class="material-icons">home</span>
+            <small>Inicio</small>
+        </button>
+    </div>
+
+    <div id="factura-container" class="oculto">
+        <h3>📄 Factura</h3>
+        <div id="factura-contenido"></div>
+    </div>
+
+    <div id="modal-busqueda" class="modal-busqueda oculto">
+        <input type="text" id="buscar-input" placeholder="Buscar productos...">
+        <button onclick="buscarProductos()">Buscar</button>
+    </div>
+
+    <div id="sidebar" class="sidebar">
+        <button class="cerrar-btn" onclick="toggleSidebar()">×</button>
+        <ul>
+            <li onclick="filtrarCategoria('todos')">Todos los productos</li>
+            <li onclick="filtrarCategoria('ropa')">Ropa</li>
+            <li onclick="filtrarCategoria('zapatos')">Zapatos</li>
+            <li onclick="filtrarCategoria('accesorios')">Accesorios</li>
+            <li onclick="mostrarCarrito()">Ver carrito</li>
+            <li onclick="mostrarPerfil()">Ver perfil</li>
+        </ul>
+    </div>
+
+    <div id="pagina-perfil" class="oculto">
+        <div class="perfil-container">
+            <div class="contenedor-foto">
+                <div id="seccion-historial" class="oculto"></div>
+                <img src="https://i.pravatar.cc/150?img=32" alt="Foto de perfil" class="foto-perfil" id="foto-perfil">
+                <label for="input-foto" class="icono-editar">
+                    <span class="material-icons">edit</span>
+                </label>
+                <input type="file" accept="image/*" id="input-foto" style="display: none;">
+            </div>
+            <h2 id="nombre-usuario">Camilo Arenas</h2>
+            <ul class="opciones-perfil">
+                <li onclick="toggleConfiguracion()">Configuración</li>
+                <li>Ayuda</li>
+                <li id="btn-mis-pedidos">Mis pedidos</li>
+            </ul>
+            <div id="seccion-configuracion" class="oculto">
+                <h3>⚙️ Configuración</h3>
+                <label for="modo-selector">Modo de Tema:</label>
+                <select id="modo-selector">
+                    <option value="claro">Modo Claro</option>
+                    <option value="oscuro">Modo Oscuro</option>
+                </select>
+            </div>
+            <button onclick="volverATienda()" class="btn-volver-tienda">⬅ Volver a la Tienda</button>
+        </div>
+    </div>
+
+    <div class="whatsapp-float" title="Contáctanos por WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
